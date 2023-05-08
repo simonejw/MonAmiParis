@@ -106,11 +106,11 @@ if language == 'Français':
     defibrillateurs_file = 'defibrillateurs.geojson'
 
     # Download the GeoJSON data from the GitHub repository using the requests library
-    fontaines = requests.get(github_url + fontaines).json()
-    wifi = requests.get(github_url + wifi).json()
-    ascenseurs = requests.get(github_url + ascenseurs).json()
-    sanisettes = requests.get(github_url + sanisettes).json()
-    defibrillateurs = requests.get(github_url + defibrillateurs).json()
+    fontaines = requests.get(github_url + fontaines_file).json()
+    wifi = requests.get(github_url + wifi_file).json()
+    ascenseurs = requests.get(github_url + ascenseurs_file).json()
+    sanisettes = requests.get(github_url + sanisettes_file).json()
+    defibrillateurs = requests.get(github_url + defibrillateurs_file).json()
 
 
     markercluster(name_sanisettes, sanisettes, sanisettes_markers, practicalmap_fr, black, user)
