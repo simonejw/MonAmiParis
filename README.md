@@ -2,7 +2,7 @@
 Welcome to Mon Ami Paris, a data visualization web app that allows users to explore various public resources and services in Paris, France.
 
 ## Usage
-To use Mon Ami Paris, simply visit the Mon Ami Paris page on Streamlit Community Cloud. The app will open in a new browser window, allowing you to explore the map and select various public resources and services to display.
+To use Mon Ami Paris, simply visit the [Mon Ami Paris](https://monamiparis.streamlit.app) page on Streamlit Community Cloud. The app will open in a new browser window, allowing you to explore the map and select various public resources and services to display.
 
 ## Features
 
