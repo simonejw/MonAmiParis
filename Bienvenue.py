@@ -16,7 +16,7 @@ if language == 'Français':
 
     st.header("Bienvenue à Mon Ami Paris!")
 
-    st.image("Data/paris4.png", caption= caption_fr)
+    st.image("paris4.png", caption= caption_fr)
     
     st.markdown(
         """
@@ -29,7 +29,7 @@ elif language == 'English':
 
     st.header("Welcome to Mon Ami Paris!")
 
-    st.image("Data/paris4.png", caption= caption_en, width = 725)
+    st.image("paris4.png", caption= caption_en, width = 725)
 
 
     st.markdown(
