@@ -94,13 +94,21 @@ if language == 'Français':
         markername = folium.plugins.MarkerCluster(name=name).add_to(mapversion)
         folium.GeoJson(data, name = name, marker = folium.Marker(icon = folium.Icon(color = iconcolor, icon=icon, prefix = prefix)), embed=True).add_to(markername)
     
-    
-    fontaines = "fontaines-a-boire.geojson"
-    wifi = "sites-disposant-du-service-paris-wi-fi.geojson"
-    ascenseurs = "ascenseurs-escalators-tele-surveillance-temps-reel.geojson"
-    sanisettes = "sanisettesparis.geojson"
-    defibrillateurs = "defibrillateurs.geojson"
    
+   # Define the GitHub repository URL and file names
+    github_url = 'https://raw.githubusercontent.com/simonejw/MonAmiParis/main/data/'
+    fontaines_file = 'fontaines-a-boire.geojson'
+    wifi_file = 'sites-disposant-du-service-paris-wi-fi.geojson'
+    ascenseurs_file = 'ascenseurs-escalators-tele-surveillance-temps-reel.geojson'
+    sanisettes_file = 'sanisettesparis.geojson'
+    defibrillateurs_file = 'defibrillateurs.geojson'
+
+    # Download the GeoJSON data from the GitHub repository using the requests library
+    fontaines = requests.get(github_url + fontaines).json()
+    wifi = requests.get(github_url + wifi).json()
+    ascenseurs = requests.get(github_url + ascenseurs).json()
+    sanisettes = requests.get(github_url + sanisettes).json()
+    defibrillateurs = requests.get(github_url + defibrillateurs).json()
 
 
     markercluster(name_sanisettes, sanisettes, sanisettes_markers, practicalmap_fr, black, user)
