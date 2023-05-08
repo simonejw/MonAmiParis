@@ -121,15 +121,15 @@ if language == 'Français':
                         ).add_to(practicalmap_fr)
 
     #Visitor Mapping
-    tournage = "lieux-de-tournage-a-paris.geojson"
-    marches = "marches-decouverts.geojson"
-    plaques = "plaques_commemoratives_1939-1945.geojson"
-    activites = "que-faire-a-paris-.geojson"
-    seniors = "seniors-a-paris-loisirs-et-citoyennete.geojson"
-    portraits = "femmes-illustres-a-paris-portraits.geojson"
-    arbres = "arbresremarquablesparis.geojson"
+    tournage = "Data/lieux-de-tournage-a-paris.geojson"
+    marches = "Data/marches-decouverts.geojson"
+    plaques = "Data/plaques_commemoratives_1939-1945.geojson"
+    activites = "Data/que-faire-a-paris-.geojson"
+    seniors = "Data/seniors-a-paris-loisirs-et-citoyennete.geojson"
+    portraits = "Data/femmes-illustres-a-paris-portraits.geojson"
+    arbres = "Data/arbresremarquablesparis.geojson"
 
-    plaques_df = gpd.read_file("plaques_commemoratives_1939-1945.geojson")
+    plaques_df = gpd.read_file("Data/plaques_commemoratives_1939-1945.geojson")
     plaques = gpd.GeoDataFrame(plaques_df)
 
     arr = [p is None for p in plaques['geometry']]
@@ -188,9 +188,9 @@ if language == 'Français':
 
 
     #Balade mapping
-    balades = "paris-autrement-balades-dans-les-arrondissements-peripheriques-parcours.geojson"
-    arrondissements = "arrondissements.geojson"
-    bois = "plu-voies-dans-les-bois.geojson"
+    balades = "Data/paris-autrement-balades-dans-les-arrondissements-peripheriques-parcours.geojson"
+    arrondissements = "Data/arrondissements.geojson"
+    bois = "Data/plu-voies-dans-les-bois.geojson"
 
     arr = gpd.read_file(arrondissements)
     arr_df = gpd.GeoDataFrame(arr)
@@ -341,11 +341,11 @@ elif language == 'English':
         folium.GeoJson(data, marker = folium.Marker(icon = folium.Icon(color = iconcolor, icon=icon, prefix = prefix)), embed=True).add_to(markername)
     
     
-    fontaines = "fontaines-a-boire.geojson"
-    wifi = "sites-disposant-du-service-paris-wi-fi.geojson"
-    ascenseurs = "ascenseurs-escalators-tele-surveillance-temps-reel.geojson"
-    sanisettes = "sanisettesparis.geojson"
-    defibrillateurs = "defibrillateurs.geojson"
+    fontaines = "Data/fontaines-a-boire.geojson"
+    wifi = "Data/sites-disposant-du-service-paris-wi-fi.geojson"
+    ascenseurs = "Data/ascenseurs-escalators-tele-surveillance-temps-reel.geojson"
+    sanisettes = "Data/sanisettesparis.geojson"
+    defibrillateurs = "Data/defibrillateurs.geojson"
     
     # Set names for each dataset
     lgd_txt = '<span style="color: {col};">{icon} {txt}</span >'
@@ -372,15 +372,15 @@ elif language == 'English':
                         ).add_to(practicalmap_en)
 
     #Visitor Mapping
-    tournage = "lieux-de-tournage-a-paris.geojson"
-    marches = "marches-decouverts.geojson"
-    plaques = "plaques_commemoratives_1939-1945.geojson"
-    activites = "que-faire-a-paris-.geojson"
-    seniors = "seniors-a-paris-loisirs-et-citoyennete.geojson"
-    portraits = "femmes-illustres-a-paris-portraits.geojson"
-    arbres = "arbresremarquablesparis.geojson"
+    tournage = "Data/lieux-de-tournage-a-paris.geojson"
+    marches = "Data/marches-decouverts.geojson"
+    plaques = "Data/plaques_commemoratives_1939-1945.geojson"
+    activites = "Data/que-faire-a-paris-.geojson"
+    seniors = "Data/seniors-a-paris-loisirs-et-citoyennete.geojson"
+    portraits = "Data/femmes-illustres-a-paris-portraits.geojson"
+    arbres = "Data/arbresremarquablesparis.geojson"
 
-    plaques_df = gpd.read_file("plaques_commemoratives_1939-1945.geojson")
+    plaques_df = gpd.read_file("Data/plaques_commemoratives_1939-1945.geojson")
     plaques = gpd.GeoDataFrame(plaques_df)
 
     arr = [p is None for p in plaques['geometry']]
@@ -458,9 +458,9 @@ elif language == 'English':
 
 
     #Balade mapping
-    balades = "paris-autrement-balades-dans-les-arrondissements-peripheriques-parcours.geojson"
-    arrondissements = "arrondissements.geojson"
-    bois = "plu-voies-dans-les-bois.geojson"
+    balades = "Data/paris-autrement-balades-dans-les-arrondissements-peripheriques-parcours.geojson"
+    arrondissements = "Data/arrondissements.geojson"
+    bois = "Data/plu-voies-dans-les-bois.geojson"
 
     arr = gpd.read_file(arrondissements)
     arr_df = gpd.GeoDataFrame(arr)
