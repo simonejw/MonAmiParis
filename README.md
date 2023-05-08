@@ -24,11 +24,11 @@ Mon Ami Paris requires the following Python packages:
 ## Acknowledgements
 Mon Ami Paris was developed by Simone Williams as part of a project for the course Scientific Computing in Astrophysics at Yale University.
 
-We would like to acknowledge the following open source projects:
+I would like to acknowledge the following open source projects:
 
 OpenStreetMap for providing the base map data
 ParisData for providing the public resources and services data (https://opendata.paris.fr/)
-Thank you for using Mon Ami Paris. We hope you find it helpful in navigating and exploring Paris.
+Thank you for using Mon Ami Paris. I hope you find it helpful in navigating and exploring Paris.
 
 
 
