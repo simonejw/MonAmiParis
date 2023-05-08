@@ -98,19 +98,11 @@ if language == 'Français':
     
    
    # Define the GitHub repository URL and file names
-    github_path = 'simonejw/MonAmiParis/Data/'
-    fontaines_file = 'fontaines-a-boire.geojson'
-    wifi_file = 'sites-disposant-du-service-paris-wi-fi.geojson'
-    ascenseurs_file = 'ascenseurs-escalators-tele-surveillance-temps-reel.geojson'
-    sanisettes_file = 'sanisettesparis.geojson'
-    defibrillateurs_file = 'defibrillateurs.geojson'
-
-    # Download the GeoJSON data from the GitHub repository using the requests library
-    fontaines = github_path + fontaines_file
-    wifi = github_path + wifi_file
-    ascenseurs = github_path + ascenseurs_file
-    sanisettes = github_path + sanisettes_file
-    defibrillateurs = github_path + defibrillateurs_file
+    fontaines = 'Data/fontaines-a-boire.geojson'
+    wifi = 'Data/sites-disposant-du-service-paris-wi-fi.geojson'
+    ascenseurs = 'Data/ascenseurs-escalators-tele-surveillance-temps-reel.geojson'
+    sanisettes = 'Data/sanisettesparis.geojson'
+    defibrillateurs = 'Data/defibrillateurs.geojson'
 
 
     markercluster(name_sanisettes, sanisettes, sanisettes_markers, practicalmap_fr, black, user)
