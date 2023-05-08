@@ -10,7 +10,6 @@ import pandas as pd
 st.markdown('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/all.min.css">', unsafe_allow_html=True)     
 
 
-# Style parameters
 #Define strings for colors
 red= 'red'
 orange = 'orange'
@@ -30,7 +29,7 @@ lightgreen = 'lightgreen'
 darkpurple='darkpurple'
 black = 'black'
 
-# Folium map initialization (for both english and french)
+# Folium map initialization (for both English and French)
 visitormap_fr = folium.Map(location=[48.8566, 2.3522], zoom_start=12)
 environmentmap_fr = folium.Map(location=[48.8566, 2.3522], zoom_start=12)
 practicalmap_fr = folium.Map(location=[48.8566, 2.3522], zoom_start=12)
@@ -54,12 +53,8 @@ if language == 'Français':
 
     # Checkbox View
     visitor_fr = st.sidebar.checkbox('Visite')
-    #environment_fr = st.sidebar.checkbox('Environnement') 
     practical_fr = st.sidebar.checkbox('Services de la ville')
     balade_fr = st.sidebar.checkbox('Balades')
-    
-    # Checkbox for more information
-    #Lieux_plus = st.checkbox("Lieux de tournage plus d'information")
                                   
     
     # Set names for each dataset
@@ -67,18 +62,17 @@ if language == 'Français':
     name_sanisettes = lgd_txt.format(col='black', icon='<i class="fa fa-user"></i>', txt='Sanisettes')
     name_wifi = lgd_txt.format(col='darkblue', txt='Wifi Hotspots', icon = '<i class="fa fa-wifi"></i>')
     name_ascenseurs = lgd_txt.format(col='red', txt='Ascenseurs', icon = '<i class="fa fa-wheelchair"></i>')
-    #name_activites = lgd_txt.format(col='black', txt='Activités', icon ='<i class="fa fa-video"></i>')
     name_fontaines = lgd_txt.format(col='blue', txt='Fontaines', icon = '<i class="fa fa-tint"></i>')
     name_defibrillateurs = lgd_txt.format(col='gray', txt='Défibrillateurs', icon = '<i class="fa fa-heartbeat"></i>')
 
-    #markercluster names
-
+    # Set markercluster names
     sanisettes_markers = 'sanisettes_cluster'
     ascenseurs_markers = 'ascenseurs_cluster'
     fontaines_markers = 'fontaines_cluster'
     defibrillateurs_markers = 'defibrillateurs_cluster'
     wifi_markers = 'wifi_cluster'
     
+    # Set names for icons
     user = 'user'
     bicycle = 'bicycle'
     volume = 'volume-up'
@@ -92,6 +86,35 @@ if language == 'Français':
     wheelchair = 'wheelchair'
 
     def markercluster(name, data, markername, mapversion, iconcolor, icon, prefix = 'glyphicon'):
+        
+         """
+        A function that creates a marker cluster and adds it to a folium map.
+
+        Parameters:
+        -----------
+        name : str
+            The name of the marker cluster.
+        data : dict or GeoDataFrame
+            The data to be added to the marker cluster.
+        markername : str
+            The name of the marker.
+        mapversion : folium.Map
+            The folium map object to which the marker cluster should be added.
+        iconcolor : str
+            The color of the marker icon.
+        icon : str
+            The name of the marker icon.
+        prefix : str, optional
+            The prefix of the marker icon. Default is 'glyphicon'.
+
+        Returns:
+        --------
+        None
+
+        Description:
+        ------------
+        This function creates a marker cluster with the given name and adds it to the folium map object. It also creates a GeoJSON layer with the given data, and adds it to the marker cluster with the specified icon color, icon name, and prefix. If no prefix is given, the default prefix 'glyphicon' is used.
+        """
         markername = folium.plugins.MarkerCluster(name=name).add_to(mapversion)
         folium.GeoJson(data, name = name, marker = folium.Marker(icon = folium.Icon(color = iconcolor, icon=icon, prefix = prefix)), embed=True).add_to(markername)
     
@@ -103,7 +126,7 @@ if language == 'Français':
     sanisettes = 'Data/sanisettesparis.geojson'
     defibrillateurs = 'Data/defibrillateurs.geojson'
 
-
+    # Create the folium.GeoJson objects for the practical map
     markercluster(name_sanisettes, sanisettes, sanisettes_markers, practicalmap_fr, black, user)
     markercluster(name_wifi, wifi, wifi_markers, practicalmap_fr, darkblue, wifi_icon, prefix='fa')
     markercluster(name_ascenseurs, ascenseurs, ascenseurs_markers, practicalmap_fr, red, wheelchair, prefix='fa')
@@ -119,7 +142,7 @@ if language == 'Français':
                         name='Layers',
                         ).add_to(practicalmap_fr)
 
-    #Visitor Mapping
+    # Visitor Mapping
     tournage = "Data/lieux-de-tournage-a-paris.geojson"
     marches = "Data/marches-decouverts.geojson"
     plaques = "Data/plaques_commemoratives_1939-1945.geojson"
@@ -135,7 +158,7 @@ if language == 'Français':
     np.isfinite(arr)
     plaques = plaques[~pd.isnull(plaques['geometry'])]
 
-    #define marker names
+    # Define marker names
     tournage_markers = 'tournage_markers'
     marches_markers = 'marches_markers'
     plaques_markers = 'plaques_markers'
@@ -145,18 +168,16 @@ if language == 'Français':
     arbres_markers = 'arbres_markers'
 
 
-    #Add text and icons for layer control
+    # Add text and icons for layer control
     lgd_txt = '<span style="color: {col};">{icon} {txt}</span >'
     name_tournage = lgd_txt.format(col='black', icon='<i class="fa fa-video-camera"></i>', txt='Lieux de tournage')
     name_marches = lgd_txt.format(col='darkblue', txt='Marchés Découverts', icon = '<i class="fa fa-shopping-basket"></i>')
     name_plaques = lgd_txt.format(col='black', txt='Plaques commémoratives 1939-1945', icon = '<i class="fa fa-bars"></i>')
-    #name_activites = lgd_txt.format(col='black', txt='Activités', icon ='<i class="fa fa-video"></i>')
     name_seniors = lgd_txt.format(col='darkgreen', txt='Activités à destination des seniors parisiens', icon = '<i class="fa fa-user-plus"></i>')
     name_portraits = lgd_txt.format(col='gray', txt='Femmes illustres à Paris', icon = '<i class="fa fa-image"></i>')
     name_arbres = lgd_txt.format(col='red', txt='Arbres Remarquables', icon = '<i class="fa fa-tree"></i>')
 
-    #define icons
-
+    # Set names for icons
     film_icon = 'video-camera'
     marche_icon = 'shopping-basket'
     plaque_icon = 'bars'
@@ -166,12 +187,9 @@ if language == 'Français':
     arbres_icon = 'tree'
     
 
-    #marchés découverts is a polygon
-    
+    # Create folium.GeoJson objects for the visitor map
     markercluster(name_tournage, tournage, tournage_markers, visitormap_fr, black, film_icon, prefix='fa')
-    #markercluster(name_marches, marches, marches_markers, visitormap_fr, darkblue, marche_icon, prefix='fa')
     markercluster(name_plaques, plaques, plaques_markers, visitormap_fr, beige, plaque_icon, prefix='fa')
-    #markercluster(name_activites, activites, activites_markers, visitormap_fr, blue, activites_icon, prefix = 'fa')
     markercluster(name_seniors, seniors, seniors_markers, visitormap_fr, red, seniors_icon, prefix='fa')
     markercluster(name_portraits, portraits, portraits_markers, visitormap_fr, red, portraits_icon, prefix='fa')
     markercluster(name_arbres, arbres, arbres_markers, visitormap_fr, red, arbres_icon, prefix='fa')
@@ -186,7 +204,7 @@ if language == 'Français':
                         ).add_to(visitormap_fr)
 
 
-    #Balade mapping
+    # Balades mapping
     balades = "Data/paris-autrement-balades-dans-les-arrondissements-peripheriques-parcours.geojson"
     arrondissements = "Data/arrondissements.geojson"
     bois = "Data/plu-voies-dans-les-bois.geojson"
@@ -201,7 +219,7 @@ if language == 'Français':
     balademap = folium.Map(location=[48.8566, 2.3522], zoom_start=12)
     lgd_txt = '<span style="color: {col};">{txt}</span>'
 
-
+    # Create folium.GeoJson objects for the balade map
     folium.GeoJson(data = bois, style_function = lambda feature: {'color': darkgreen,'weight': 3}, name=lgd_txt.format(col='black', txt='Voies dans les bois'), embed =True).add_to(balademap_fr)
     folium.GeoJson(data=balades, style_function=lambda feature: {'color': 'black', 'weight': 3}, name=lgd_txt.format(col='green', txt='Balades'), embed=True).add_to(balademap_fr)
     folium.GeoJson(data = arrondissements, name=lgd_txt.format(col='blue', txt='Arrondissements'), embed=True).add_to(balademap_fr)
@@ -247,16 +265,6 @@ if language == 'Français':
             st.markdown("Source de données : Paris Open Data - https://opendata.paris.fr/") 
         else: 
             st.markdown("Source de données : Paris Open Data - https://opendata.paris.fr/") 
-
-    #elif environment_fr:
-        #st_data = st_folium(environmentmap_fr, width=725)
-        #voir_plus_fr = st.checkbox("Voir plus d'informations sur les jeux de données")
-       
-        #if voir_plus_fr:
-            #st.markdown("**Lieux de tournage:** Lieux de tournage de scène en extérieur à Paris depuis 2016. Les données de l'année en cours ne sont pas publiées.Les tournages désignent les longs métrages, les séries et les téléfilms, réalisés à l’extérieur.Les lieux de tournage de l’année en cours ne sont pas diffusés. Depuis 2017, les informations sont issues de l’application AGATE, application d'instruction des demandes de tournage utilisée par la Mission Cinéma.")
-            #st.markdown("Source de données : Paris Open Data - https://opendata.paris.fr/") 
-        #else: 
-            #st.markdown("Source de données : Paris Open Data - https://opendata.paris.fr/") 
     
     elif balade_fr:
         st_data = st_folium(balademap_fr, width=725)
@@ -268,12 +276,13 @@ if language == 'Français':
             st.markdown("Source de données : Paris Open Data - https://opendata.paris.fr/") 
         else: 
             st.markdown("Source de données : Paris Open Data - https://opendata.paris.fr/") 
-    
+            
+    # Set the default map option to display a clean map of Paris
     else: 
         st_data = st_folium(parismap, width=725)
     
     
-##English!
+# English version
 
 elif language == 'English': 
     st.title('Mon Ami Paris', help = "These maps take some time to render.")
@@ -321,7 +330,7 @@ elif language == 'English':
     darkpurple='darkpurple'
     black = 'black'
 
-
+    # Set names for icons
     user = 'user'
     bicycle = 'bicycle'
     volume = 'volume-up'
@@ -441,7 +450,6 @@ elif language == 'English':
     markercluster(name_tournage, tournage, tournage_markers, visitormap_en, black, film_icon, prefix='fa')
     markercluster(name_marches, marches, marches_markers, visitormap_en, darkblue, marche_icon, prefix='fa')
     markercluster(name_plaques, plaques, plaques_markers, visitormap_en, orange, plaque_icon, prefix='fa')
-    #markercluster(name_activites, activites, activites_markers, visitormap_en, blue, activites_icon, prefix = 'fa')
     markercluster(name_seniors, seniors, seniors_markers, visitormap_en, red, seniors_icon, prefix='fa')
     markercluster(name_portraits, portraits, portraits_markers, visitormap_en, red, portraits_icon, prefix='fa')
     markercluster(name_arbres, arbres, arbres_markers, visitormap_en, red, arbres_icon, prefix='fa')
@@ -502,18 +510,6 @@ elif language == 'English':
             st.markdown("Data source: Paris Open Data - https://opendata.paris.fr/") 
         else: 
             st.markdown("Data source: Paris Open Data - https://opendata.paris.fr/") 
-    
-    #elif environment_en:
-        #st_data = st_folium(environmentmap_en, width=725)
-        
-        #voir_plus_en = st.checkbox("See more information")
-        
-        #if voir_plus_en: 
-            #st.markdown("**Sites of filming:** Displays sites of filming in Paris since 2016. The data for the current year has not been updated. Since 2017, this information has been accessed through the app AGATE.")
-            #st.markdown("**Open air markets:** Displays food markets or other specialized markets. A market est composed of mostly of Un marché de plein vent ou découvert est composé en majorité de commerçants non sédentaires, alimentaires ou non, auxquels s’ajoutent des producteurs locaux.")
-            #st.markdown("Data source: Paris Open Data - https://opendata.paris.fr/") 
-        #else: 
-            #st.markdown("Data source: Paris Open Data - https://opendata.paris.fr/")
 
     elif practical_en:
         st_data = st_folium(practicalmap_en, width=725)
@@ -540,6 +536,7 @@ elif language == 'English':
             st.markdown("Data source: Paris Open Data - https://opendata.paris.fr/") 
         else: 
             st.markdown("Data source: Paris Open Data - https://opendata.paris.fr/")
-    
+            
+    # Set the default map option to a clean map of Paris
     else: 
         st_data = st_folium(parismap, width=725)
