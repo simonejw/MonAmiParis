@@ -12,11 +12,13 @@ language = st.sidebar.selectbox(
 
 caption_fr = "La Tour Eiffel vue du septième arrondissement"
 caption_en = "The Eiffel Tower as seen from the seventh district"
+
+image_file = 'Data/paris4.png'
 if language == 'Français': 
 
     st.header("Bienvenue à Mon Ami Paris!")
 
-    st.image("paris4.png", caption= caption_fr)
+    st.image(image_file, caption= caption_fr)
     
     st.markdown(
         """
@@ -29,7 +31,7 @@ elif language == 'English':
 
     st.header("Welcome to Mon Ami Paris!")
 
-    st.image("paris4.png", caption= caption_en, width = 725)
+    st.image(image_file, caption= caption_en, width = 725)
 
 
     st.markdown(
