@@ -535,7 +535,7 @@ elif language == 'English':
         voir_plus_en = st.checkbox("See more information")
         
         if voir_plus_en: 
-            st.markdown("**City walks:** Walking paths found in the 12, 13 et 14th districts.")
+            st.markdown("**City walks:** Walking paths found in the 12, 13, and 14th districts.")
             st.markdown("**Districts:** All 19 districts of Paris.")
             
             st.markdown("Data source: Paris Open Data - https://opendata.paris.fr/") 
