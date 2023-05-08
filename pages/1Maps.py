@@ -4,6 +4,8 @@ import streamlit as st
 from streamlit_folium import st_folium
 import numpy as np
 import pandas as pd
+import requests
+
 
 # Load Font Awesome CSS
 st.markdown('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/all.min.css">', unsafe_allow_html=True)     
