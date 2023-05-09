@@ -86,36 +86,36 @@ if language == 'Français':
     wheelchair = 'wheelchair'
 
     def markercluster(name, data, markername, mapversion, iconcolor, icon, prefix='glyphicon'):
-    """
-    A function that creates a marker cluster and adds it to a folium map.
+        """
+        A function that creates a marker cluster and adds it to a folium map.
 
-    Parameters:
-    -----------
-    name : str
-        The name of the marker cluster.
-    data : dict or GeoDataFrame
-        The data to be added to the marker cluster.
-    markername : str
-        The name of the marker.
-    mapversion : folium.Map
-        The folium map object to which the marker cluster should be added.
-    iconcolor : str
-        The color of the marker icon.
-    icon : str
+        Parameters:
+        -----------
+        name : str
+            The name of the marker cluster.
+        data : dict or GeoDataFrame
+            The data to be added to the marker cluster.
+        markername : str
+            The name of the marker.
+        mapversion : folium.Map
+            The folium map object to which the marker cluster should be added.
+        iconcolor : str
+            The color of the marker icon.
+        icon : str
         The name of the marker icon.
-    prefix : str, optional
-        The prefix of the marker icon. Default is 'glyphicon'.
+        prefix : str, optional
+            The prefix of the marker icon. Default is 'glyphicon'.
 
-    Returns:
-    --------
-    None
+        Returns:
+        --------
+        None
 
-    Description:
-    ------------
-    This function creates a marker cluster with the given name and adds it to the folium map object. It also creates a GeoJSON layer with the given data, and adds it to the marker cluster with the specified icon color, icon name, and prefix. If no prefix is given, the default prefix 'glyphicon' is used.
-    """
-    markername = folium.plugins.MarkerCluster(name=name).add_to(mapversion)
-    folium.GeoJson(data, name=name, marker=folium.Marker(icon=folium.Icon(color=iconcolor, icon=icon, prefix=prefix)), embed=True).add_to(markername)
+        Description:
+        ------------
+        This function creates a marker cluster with the given name and adds it to the folium map object. It also creates a GeoJSON layer with the given data, and adds it to the marker cluster with the specified icon color, icon name, and prefix. If no prefix is given, the default prefix 'glyphicon' is used.
+        """
+        markername = folium.plugins.MarkerCluster(name=name).add_to(mapversion)
+        folium.GeoJson(data, name=name, marker=folium.Marker(icon=folium.Icon(color=iconcolor, icon=icon, prefix=prefix)), embed=True).add_to(markername)
 
    
    # Define the GitHub repository URL and file names
